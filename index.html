@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <style>
+    body {font-family: 'Open Sans', sans-serif; background: #eee; margin: 0 auto 0 auto; width: 100%; text-align: center; margin: 20px 0px 20px 0px;}
+    h1 {font-size: 1.5em; padding-top: 5%;}
+    .box {background: white; min-width: 350px; width: 30%; border-radius: 10px; margin: 0 auto 0 auto; padding: 0px 0px 30px 0px;}
+    .g-signin2 {width: 100%;}
+    .g-signin2 > div {margin: 0 auto;}
+  </style>
+  <meta name="google-signin-client_id" content="539321951158-eqrbietceq087q8foofctkje3jm2et9d.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+<body>
+  <div class="box">
+    <h1>Sistema de control escolar</h1>
+    <span style="font-size: 1.2em;">Iniciar sesión</span><br><br>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <p id="mensaje" style="font-weight: bold;"></p>
+  </div>
+  <script>
+    function onSignIn(googleUser) {
+      document.getElementById("mensaje").innerHTML = 'Procesando...';
+      var id_token = googleUser.getAuthResponse().id_token;
+      var url = 'https://script.google.com/macros/s/AKfycbyUY1MitVEy6rrqFtHUoZfZEpQX6kOjEuFUnPxsFQaGXcJK3C8/exec?q=' + id_token;
+      window.location.href = url;
+    }
+  </script>
+</body>
+</html>
